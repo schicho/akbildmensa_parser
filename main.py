@@ -29,9 +29,9 @@ NON_VEGETERIAN = "Nicht Vegetarisch"
 VEGETERIAN = "Vegetarisch"
 VEGAN = "Vegan"
 
-VEG_PRICE = 6
-NON_VEG_PRICE = 7
-WOCHENTELLER_PRICE = 8
+VEG_PRICE = 6.5
+NON_VEG_PRICE = 7.5
+WOCHENTELLER_PRICE = 9.0
 
 
 class Parser:
@@ -77,7 +77,7 @@ class Parser:
                 name, category, allergenes = self._parse_mealname(meal.get_text())
 
                 price = NON_VEG_PRICE if category == NON_VEGETERIAN else VEG_PRICE
-                prices = {"student": f"{price - 2}.00", "other": f"{price}.00"}
+                prices = {"student": price - 2, "other": price}
 
                 feed.addMeal(
                     current_date_str, category, name, allergenes, prices=prices
@@ -93,7 +93,7 @@ class Parser:
                     f"Wochenteller {category}",
                     name,
                     allergenes,
-                    {"other": f"{WOCHENTELLER_PRICE}.00"},
+                    {"other": WOCHENTELLER_PRICE},
                 )
 
         return feed.toXMLFeed()
