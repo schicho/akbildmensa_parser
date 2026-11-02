@@ -32,10 +32,8 @@ VEG_PRICE = 6.5
 NON_VEG_PRICE = 7.5
 WOCHENTELLER_PRICE = 9.0
 
-
 class InvalidMenuDateError(ValueError):
     """Raised when the parsed menu start date is not a Monday."""
-
 
 class Parser:
     def generate_feed(self, fetch_date: date) -> str:
